@@ -2,13 +2,13 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
-  Get,
+  Get, HttpException, HttpStatus,
   Inject,
   Post,
   Put,
   Req,
   UseGuards,
-  UseInterceptors,
+  UseInterceptors
 } from "@nestjs/common";
 import {
   ApiOkResponse,
@@ -70,6 +70,7 @@ export class UsersController {
     @Req() req: RequestWithUser,
     @Body() body: updateProfileDto
   ) {
+
     const uploadAvatar = async (base64: string) => {
       const bucketName = "garazh";
       const fileName = `avatars/image_${Date.now()}`;

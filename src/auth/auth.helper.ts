@@ -10,8 +10,8 @@ export class AuthHelper {
 
   public async  encodePassword(password: string) {
     const salt: string = bcrypt.genSaltSync(10);
-
     return  bcrypt.hashSync(password, salt);
+
 
   }
 

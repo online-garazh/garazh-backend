@@ -13,6 +13,7 @@ export class AuthController {
   @Post("/login/")
   @ApiOperation({ summary: "Login user" })
   login(@Body() body: AuthenticateDto) {
+    
     return this.service.login(body);
   }
 
