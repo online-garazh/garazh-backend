@@ -14,7 +14,7 @@ import { S3Service } from "./services/s3.service";
 import { TemporaryFileEntity } from "./temporary-files/temp-images.entity";
 // import { TemporaryFileModule } from "./temporary-files/temporary-file.module";
 
-// import * as fs from 'fs';
+import * as fs from 'fs';
 
 @Module({
   imports: [
@@ -41,21 +41,22 @@ import { TemporaryFileEntity } from "./temporary-files/temp-images.entity";
     //   autoLoadEntities: true,
     //   migrationsRun: true,
     // }),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'ec2-34-241-82-91.eu-west-1.compute.amazonaws.com',
-    //   port: 5432,
-    //   username:'xqcsbyaolshmct',
-    //   password: "e4aa94556cd362eeb4ad681598c4d6de87acc5e83a3ce88d34abdf0d9b2310ba",
-    //   database: "dav6i2nv8o0ou0",
-    //   entities: [UserEntity],
-    //   synchronize: true,
-    //   autoLoadEntities: true,
-    //   migrationsRun: true,
-    //   ssl: {
-    //     ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
-    //   },
-    // }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST,
+      url: process.env.DATABASE_URL,
+      port: Number(process.env.PORT) || 5432,
+      username: process.env.DB_USER_NAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      entities: [UserEntity],
+      synchronize: true,
+      autoLoadEntities: true,
+      migrationsRun: true,
+      ssl: {
+        ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
+      },
+    }),
     // AuthModule,
   ],
   controllers: [AppController],
