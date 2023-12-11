@@ -14,7 +14,7 @@ import { S3Service } from "./services/s3.service";
 import { TemporaryFileEntity } from "./temporary-files/temp-images.entity";
 // import { TemporaryFileModule } from "./temporary-files/temporary-file.module";
 
-import * as fs from 'fs';
+// import * as fs from 'fs';
 
 @Module({
   imports: [
@@ -53,9 +53,9 @@ import * as fs from 'fs';
       synchronize: true,
       autoLoadEntities: true,
       migrationsRun: true,
-      ssl: {
-        ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
-      },
+      // ssl: {
+      //   ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
+      // },
     }),
     // AuthModule,
   ],
