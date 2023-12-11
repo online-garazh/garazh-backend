@@ -51,8 +51,9 @@ import { TemporaryFileEntity } from "./temporary-files/temp-images.entity";
       database: process.env.DB_NAME,
       entities: [UserEntity],
       synchronize: true,
-      autoLoadEntities: true,
       migrationsRun: true,
+      autoLoadEntities: true,
+
       // ssl: {
       //   ca: fs.readFileSync(process.env.SSL_CA_CERTIFICATES),
       // },
