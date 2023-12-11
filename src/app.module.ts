@@ -3,16 +3,16 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule } from "@nestjs/config";
-// import { AuthModule } from "./auth/auth.module";
+import { AuthModule } from "./auth/auth.module";
 import { UserEntity } from "./users/user.entity";
 import * as process from "process";
-// import { CarsModule } from "./cars/cars.module";
+import { CarsModule } from "./cars/cars.module";
 import { CarsController } from "./cars/cars.controller";
 
 import { S3Service } from "./services/s3.service";
 
 import { TemporaryFileEntity } from "./temporary-files/temp-images.entity";
-// import { TemporaryFileModule } from "./temporary-files/temporary-file.module";
+import { TemporaryFileModule } from "./temporary-files/temporary-file.module";
 
 import * as fs from 'fs';
 
@@ -75,7 +75,9 @@ import * as fs from 'fs';
         rejectUnauthorized: false,
       },
     }),
-    // AuthModule,
+    AuthModule,
+    CarsModule,
+    TemporaryFileModule,
   ],
   controllers: [AppController],
   providers: [AppService, S3Service],
